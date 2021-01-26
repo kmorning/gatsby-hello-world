@@ -52,8 +52,8 @@ module.exports = (shipit) => {
               {
                   name: '${appName}',
                   cwd: '${shipit.releasePath}',
-                  script: '~/.yarn/bin/gatsby',
-                  args: 'serve',
+                  script: 'yarn',
+                  args: 'gatsby serve',
                   interpreter: '/bin/bash',
                   watch: true,
                   autorestart: true,
