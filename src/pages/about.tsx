@@ -1,12 +1,11 @@
 import React from 'react'
-import Header from '../components/Header'
+import Layout from '../components/Layout'
 
 const About: React.FC = () => (
-  <div style={{ color: `teal` }}>
-    <Header headerText="About Gatsby" />
-    <Header headerText="It's pretty cool" />
-    <p>Such wow. Very React.</p>
-  </div>
+  <Layout>
+    <h1>About</h1>
+    <p>This is the staging ground for the development of our website.</p>
+  </Layout>
 )
 
 export default About

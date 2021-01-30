@@ -1,14 +1,11 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import Header from '../components/Header'
+import Layout from '../components/Layout'
 
 const Home: React.FC = () => (
-  <div style={{ color: `purple` }}>
-    <Link to="/contact">Contact</Link>
-    <Header headerText="Hello Gatsby" />
-    <p>What a world.</p>
-    <img src="https://source.unsplash.com/random/400x200" alt="Random pic" />
-  </div>
+  <Layout>
+    <h1>Welcome!</h1>
+    <p>Building a better website...one day at a time!</p>
+  </Layout>
 )
 
 export default Home
