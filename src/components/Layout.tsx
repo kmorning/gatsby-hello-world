@@ -1,5 +1,10 @@
-import { Link } from 'gatsby'
+/** @jsx jsx */
+// the line above activates the jsx factory by emotion
 import React from 'react'
+import { css, jsx } from '@emotion/react'
+import { Link } from 'gatsby'
+
+// import { rhythm } from '../utils/typography'
 
 interface ListLinkProps {
   to: string
@@ -10,6 +15,13 @@ interface LayoutProps {
   children: React.ReactNode
 }
 
+const divStyle = css({
+  margin: '0 auto',
+  maxWidth: '700px',
+  padding: '2rem',
+  paddingTop: '1.5rem'
+})
+
 const ListLink: React.FC<ListLinkProps> = ({ to, children }) => (
   <li style={{ display: `inline-block`, marginRight: `1rem` }}>
     <Link to={to}>{children}</Link>
@@ -17,7 +29,7 @@ const ListLink: React.FC<ListLinkProps> = ({ to, children }) => (
 )
 
 const Layout: React.FC<LayoutProps> = ({ children }) => (
-  <div style={{ margin: `3rem auto`, maxWidth: 650, padding: `0 1rem` }}>
+  <div css={divStyle}>
     <header style={{ marginBottom: `1.5rem` }}>
       <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
         <h3>Alcoholics Anonymous Quinte East</h3>
