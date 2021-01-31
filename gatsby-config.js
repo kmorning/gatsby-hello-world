@@ -6,6 +6,9 @@
 
 module.exports = {
   /* Your site config here */
+  siteMetadata: {
+    title: `Quinte East AA`
+  },
   plugins: [
     `gatsby-plugin-emotion`,
     {
