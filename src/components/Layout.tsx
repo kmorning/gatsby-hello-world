@@ -2,7 +2,7 @@
 // the line above activates the jsx factory by emotion
 import React from 'react'
 import { css, jsx } from '@emotion/react'
-import { Link } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 
 import { rhythm } from '../utils/typography'
 
@@ -13,6 +13,14 @@ interface ListLinkProps {
 
 interface LayoutProps {
   children: React.ReactNode
+}
+
+interface StaticQueryProps {
+  site: {
+    siteMetadata: {
+      title: string
+    }
+  }
 }
 
 const divStyle = css({
@@ -39,20 +47,33 @@ const ListLink: React.FC<ListLinkProps> = ({ to, children }) => (
   </li>
 )
 
-const Layout: React.FC<LayoutProps> = ({ children }) => (
-  <div css={divStyle}>
-    <header style={{ marginBottom: `1.5rem` }}>
-      <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
-        <h3 css={h3Style}>Quinte East AA</h3>
-      </Link>
-      <ul css={listStyle}>
-        <ListLink to="/">Home</ListLink>
-        <ListLink to="/about">About</ListLink>
-        <ListLink to="/contact">Contact</ListLink>
-      </ul>
-    </header>
-    {children}
-  </div>
-)
+const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const data = useStaticQuery<StaticQueryProps>(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  )
+  return (
+    <div css={divStyle}>
+      <header style={{ marginBottom: `1.5rem` }}>
+        <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
+          <h3 css={h3Style}>{data.site.siteMetadata.title}</h3>
+        </Link>
+        <ul css={listStyle}>
+          <ListLink to="/">Home</ListLink>
+          <ListLink to="/about">About</ListLink>
+          <ListLink to="/contact">Contact</ListLink>
+        </ul>
+      </header>
+      {children}
+    </div>
+  )
+}
 
 export default Layout
